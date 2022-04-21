@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        kotlin_version = '1.5.31'
+        google_services_version = "4.3.10"
+        lifecycle_version = "2.4.0"
+        lifecycle_extensions_version = "2.2.0"
+        kotlin_coroutines_version = "1.5.2"
+        kotlin_serialization_version = "0.20.0"
+        retrofit_coroutines_adapter_version = "0.9.2"
+        compose_version = '1.0.5'
+        constraintlayout_compose_version = '1.0.0-rc02'
+        compose_activity_version = '1.4.0'
+        compose_view_model_version = '2.4.0'
+        okHttp_version = '4.9.2'
+        retrofit_version = '2.9.0'
+        moshi_version = '1.12.0'
+        dagger_hilt_version = '2.39.1'
+        retrofit_coroutines_adapter_version = '0.9.2'
+        truth_version = '1.1.3'
+        mockk_version = '1.12.1'
+        robolectric_version = '4.7.2'
+        archCoreTest_version = '2.1.0'
+        compose_navigation_version = "2.4.0-beta02"
+        hilt_navigation_version = "1.0.0-beta01"
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.3"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.gms:google-services:$google_services_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_hilt_version"
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
