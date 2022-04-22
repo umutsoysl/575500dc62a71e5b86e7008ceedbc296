@@ -5,10 +5,12 @@ import androidx.room.RoomDatabase
 import com.umut.soysal.spacedelivery.core.db.dao.PlanetDao
 import com.umut.soysal.spacedelivery.core.db.dao.SpaceDao
 import com.umut.soysal.spacedelivery.core.db.entity.PlanetEntity
+import com.umut.soysal.spacedelivery.core.db.entity.SpaceEntity
 
 @Database(
     entities = [
         PlanetEntity::class,
+        SpaceEntity::class,
     ],
     version = 1,
     exportSchema = false
