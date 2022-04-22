@@ -15,7 +15,7 @@ val typography = Typography(
     h4 = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
     h5 = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold),
     h6 = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.Bold),
-    body1 = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.Medium),
+    body1 = TextStyle(fontSize = 15.sp, fontWeight = FontWeight.Normal),
     body2 = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.ExtraBold),
     subtitle1 = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold),
     subtitle2 = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Medium),

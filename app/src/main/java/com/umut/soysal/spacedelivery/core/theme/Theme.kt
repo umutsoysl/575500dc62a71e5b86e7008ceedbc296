@@ -16,7 +16,8 @@ private val DarkColorPalette = darkColors(
     primaryVariant = Purple700,
     secondary = Teal200,
     background = Color.Black,
-    surface = Color.White
+    surface = Color.White,
+    error = Color.LightGray,
 )
 
 private val LightColorPalette = lightColors(
@@ -24,7 +25,8 @@ private val LightColorPalette = lightColors(
     primaryVariant = Purple700,
     secondary = Teal200,
     background = Color.White,
-    surface = Color.Black
+    surface = Color.Black,
+    error = Color.Gray,
 )
 
 val SpaceXColor: Colors

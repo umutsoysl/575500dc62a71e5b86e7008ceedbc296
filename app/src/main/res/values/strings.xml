@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Space Delivery</string>
+    <string name="durability">Dayanıklılık</string>
+    <string name="speed">Hız</string>
+    <string name="capacity">Kapasite</string>
+    <string name="next">Devam Et</string>
+    <string name="name">Uzay Aracı İsmi</string>
+    <string name="space_point">Dağıtılacak Puan:</string>
+    <string name="space_point_warning">Dağıtılacak Puan Maksimum 15 olmalıdır. Lütfen puanı azaltınız!</string>
 </resources>
