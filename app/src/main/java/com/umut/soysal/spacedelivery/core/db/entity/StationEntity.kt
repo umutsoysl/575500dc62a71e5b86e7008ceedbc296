@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.umut.soysal.spacedelivery.core.constant.GlobalConstant
 
 @Entity(tableName = GlobalConstant.DB_PLANET_TABLE)
-data class PlanetEntity (
+data class StationEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
@@ -27,4 +27,7 @@ data class PlanetEntity (
 
     @ColumnInfo(name = "need")
     val need: Int = 0,
+
+    @ColumnInfo(name = "isFavorite")
+    val isFavorite: Boolean = false,
 )

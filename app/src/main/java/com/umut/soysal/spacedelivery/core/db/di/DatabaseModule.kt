@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.umut.soysal.spacedelivery.core.constant.GlobalConstant
 import com.umut.soysal.spacedelivery.core.db.SpaceXDatabase
-import com.umut.soysal.spacedelivery.core.db.dao.PlanetDao
+import com.umut.soysal.spacedelivery.core.db.dao.StationDao
 import com.umut.soysal.spacedelivery.core.db.dao.SpaceDao
 import dagger.Module
 import dagger.Provides
@@ -42,8 +42,8 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun providePlanetDao(database: SpaceXDatabase): PlanetDao {
-        return database.planetDao()
+    fun provideStationDao(database: SpaceXDatabase): StationDao {
+        return database.stationDao()
     }
 
     @Singleton
