@@ -11,8 +11,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface StationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPlanet(station: StationEntity)
+    fun insertStation(station: StationEntity)
 
     @Query("SELECT * FROM ${GlobalConstant.DB_PLANET_TABLE} WHERE name LIKE :searchKey")
-    fun searchPlanet(searchKey: String?): Flow<List<StationEntity>>
+    fun searchStation(searchKey: String?): Flow<List<StationEntity>>
+
+    @Query("SELECT * FROM ${GlobalConstant.DB_PLANET_TABLE} WHERE isFavorite=1")
+    fun favoriteStationList(): Flow<List<StationEntity>>
 }
