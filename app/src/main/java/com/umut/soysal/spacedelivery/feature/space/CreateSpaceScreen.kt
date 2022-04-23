@@ -1,4 +1,4 @@
-package com.umut.soysal.spacedelivery.feature
+package com.umut.soysal.spacedelivery.feature.space
 
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.umut.soysal.spacedelivery.R
+import com.umut.soysal.spacedelivery.core.navigation.Screens
 import com.umut.soysal.spacedelivery.core.theme.SpaceXColor
 import com.umut.soysal.spacedelivery.core.ui.component.HeaderTitleText
 import com.umut.soysal.spacedelivery.core.ui.component.InputText
@@ -176,6 +177,8 @@ fun CreateSpaceScreen(
                         onClick = {
                             if(spacePoint>15) {
                                 Toast.makeText(context, context.getString(R.string.space_point_warning), Toast.LENGTH_SHORT).show()
+                            } else{
+                                navigationController?.navigate(Screens.HomeScreen.route)
                             }
                         },
                         modifier = Modifier

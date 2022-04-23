@@ -4,7 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.umut.soysal.spacedelivery.feature.CreateSpaceScreen
+import com.umut.soysal.spacedelivery.feature.HomeScreen
+import com.umut.soysal.spacedelivery.feature.space.CreateSpaceScreen
 import com.umut.soysal.spacedelivery.feature.SplashScreen
 
 @Composable
@@ -29,6 +30,15 @@ fun SpaceXNavHost() {
             route = Screens.CreateSpaceScreen.route
         ) {
             CreateSpaceScreen(
+                navigationController = navigation
+            )
+        }
+
+        //Home screen
+        composable(
+            route = Screens.HomeScreen.route
+        ) {
+            HomeScreen(
                 navigationController = navigation
             )
         }
