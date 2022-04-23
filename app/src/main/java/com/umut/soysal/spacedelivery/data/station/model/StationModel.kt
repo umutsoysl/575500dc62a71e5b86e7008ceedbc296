@@ -23,5 +23,5 @@ data class StationModel(
     @Json(name = "need")
     val need: Int = 0,
 
-    val isFavorite: Boolean = true
+    val isFavorite: Boolean = false
 )

@@ -1,7 +1,8 @@
 package com.umut.soysal.spacedelivery.data.station.repository
 
-import androidx.annotation.VisibleForTesting
+import com.umut.soysal.spacedelivery.core.db.entity.StationEntity
 import com.umut.soysal.spacedelivery.core.di.IoDispatcher
+import com.umut.soysal.spacedelivery.core.state.ServiceResult
 import com.umut.soysal.spacedelivery.data.station.mapper.StationMapper
 import com.umut.soysal.spacedelivery.data.station.model.StationModel
 import com.umut.soysal.spacedelivery.data.station.remote.StationRemoteDataSource
@@ -20,40 +21,47 @@ class StationRepositoryImpl @Inject constructor(
     private val mapper: StationMapper
 ): StationRepository {
 
-    override suspend fun fetchStationList(searchKey: String): Flow<List<StationModel>> {
+    override suspend fun fetchStationList(searchKey: String): Flow<List<StationEntity>> {
         return flow {
-            fetchStationListDataFromLocal().collect { localeResponse ->
+            fetchStationListDataFromLocal(searchKey).collect { localeResponse ->
                 if (localeResponse.isNullOrEmpty()) {
+                    System.out.println("read remote data")
                     fetchStationListDataFromRemote().collect { remoteResponse ->
                         emit(remoteResponse)
                     }
+                } else {
+                    System.out.println("read local data")
+                    emit(localeResponse)
                 }
             }
         }.flowOn(ioDispatcher)
     }
 
 
-    @VisibleForTesting
-    suspend fun fetchStationListDataFromLocal() =
-        stationLocalDataSource.favoriteStationList()
+    suspend fun fetchStationListDataFromLocal(searchKey: String) =
+        stationLocalDataSource.searchStation(searchKey)
 
 
-    @VisibleForTesting
-    suspend fun fetchStationListDataFromRemote(): Flow<List<StationModel>> {
+    suspend fun fetchStationListDataFromRemote(): Flow<List<StationEntity>> {
         return flow {
             stationRemoteDataSource.fetchStationList()
                 .collect { response ->
-                    response.onEach { station ->
-                        insertStationResponse(station)
+                    when(response) {
+                        is ServiceResult.Success -> {
+                            var entityStationList: List<StationEntity> = listOf()
+                            (response as ServiceResult.Success).data.onEach { station ->
+                                insertStationResponse(station)
+                                entityStationList +=  mapper.mapToEntity(station)
+                            }
+                            emit(entityStationList)
+                        }
                     }
-                    emit(response)
                 }
         }.flowOn(ioDispatcher)
     }
 
 
-    @VisibleForTesting
-    suspend fun insertStationResponse(remoteData: StationModel) {
+    suspend fun insertStationResponse(remoteData: StationModel)  {
         stationLocalDataSource.insertStation(
             mapper.mapToEntity(
                 response = remoteData

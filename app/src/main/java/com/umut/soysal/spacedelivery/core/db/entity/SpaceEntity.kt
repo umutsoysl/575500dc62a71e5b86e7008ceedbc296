@@ -11,7 +11,7 @@ data class SpaceEntity (
     val id: Int = 0,
 
     @ColumnInfo(name = "name")
-    val name: String?,
+    val name: String = "",
 
     @ColumnInfo(name = "capacity")
     val capacity: Int = 0,

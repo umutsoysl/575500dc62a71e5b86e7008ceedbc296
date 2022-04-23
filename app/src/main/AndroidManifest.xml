@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.umut.soysal.spacedelivery">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".core.SpaceApplication"
         android:allowBackup="true"

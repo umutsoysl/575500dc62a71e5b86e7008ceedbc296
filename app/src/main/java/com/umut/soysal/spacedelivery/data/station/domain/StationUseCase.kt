@@ -1,10 +1,8 @@
 package com.umut.soysal.spacedelivery.data.station.domain
 
-import com.umut.soysal.spacedelivery.data.station.model.StationModel
+import com.umut.soysal.spacedelivery.core.db.entity.StationEntity
 import kotlinx.coroutines.flow.Flow
 
 interface StationUseCase {
-    suspend fun fetchStationList() : Flow<List<StationModel>>
-
-    suspend fun searchStation(searchKey: String) : Flow<List<StationModel>>
+    suspend fun fetchStationList(searchKey: String) : Flow<List<StationEntity>>
 }

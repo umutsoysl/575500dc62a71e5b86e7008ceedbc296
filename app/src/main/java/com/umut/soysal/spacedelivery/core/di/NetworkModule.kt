@@ -24,6 +24,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    private const val URL = "https://run.mocky.io/v3/e7211664-cbb6-4357-9c9d-f12bf8bab2e2/"
+
     @Singleton
     @Provides
     fun provideApplication(@ApplicationContext app: Context): SpaceApplication {
@@ -50,7 +52,7 @@ object NetworkModule {
     fun provideRetrofit(
         client: OkHttpClient, moshiConverterFactory: MoshiConverterFactory
     ): Retrofit {
-        return Retrofit.Builder().baseUrl("url")
+        return Retrofit.Builder().baseUrl(URL)
             .addConverterFactory(moshiConverterFactory)
             .client(client)
             .build()
@@ -58,26 +60,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(
-        headerInterceptor: Interceptor,
-        cache: Cache
-    ): OkHttpClient {
+    fun provideOkHttpClient(): OkHttpClient {
 
         val okHttpClientBuilder = OkHttpClient().newBuilder()
         okHttpClientBuilder.connectTimeout(GlobalConstant.CONNECTION_TIMEOUT.toLong(), TimeUnit.SECONDS)
         okHttpClientBuilder.readTimeout(GlobalConstant.READ_TIMEOUT.toLong(), TimeUnit.SECONDS)
         okHttpClientBuilder.writeTimeout(GlobalConstant.WRITE_TIMEOUT.toLong(), TimeUnit.SECONDS)
-        okHttpClientBuilder.cache(cache)
-        okHttpClientBuilder.addInterceptor(headerInterceptor)
 
         return okHttpClientBuilder.build()
-    }
-
-
-    @Provides
-    @Singleton
-    internal fun provideCache(context: Context): Cache {
-        val httpCacheDirectory = File(context.cacheDir.absolutePath, "HttpCache")
-        return Cache(httpCacheDirectory, GlobalConstant.CACHE_SIZE_BYTES)
     }
 }

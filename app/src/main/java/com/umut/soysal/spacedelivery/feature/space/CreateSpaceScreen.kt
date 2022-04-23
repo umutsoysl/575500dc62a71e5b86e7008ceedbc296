@@ -178,6 +178,12 @@ fun CreateSpaceScreen(
                             if(spacePoint>15) {
                                 Toast.makeText(context, context.getString(R.string.space_point_warning), Toast.LENGTH_SHORT).show()
                             } else{
+                                viewModel.insertSpace(
+                                    spaceName,
+                                    speedPoint,
+                                    capacityPoint,
+                                    durabilityPoint
+                                )
                                 navigationController?.navigate(Screens.HomeScreen.route)
                             }
                         },
