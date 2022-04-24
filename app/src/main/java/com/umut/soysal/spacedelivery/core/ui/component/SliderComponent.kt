@@ -19,13 +19,15 @@ import androidx.compose.ui.unit.dp
 import com.umut.soysal.spacedelivery.R
 import com.umut.soysal.spacedelivery.core.db.entity.StationEntity
 import com.umut.soysal.spacedelivery.core.theme.SpaceXColor
-import kotlinx.coroutines.launch
 
 
 @Composable
 fun SliderItemComponent(
     item: StationEntity,
-    clickFavoriteButtonValue: (Boolean) -> Unit = {}
+    distance: Double,
+    isTravel: Boolean =false,
+    clickFavoriteButtonValue: (Boolean) -> Unit = {},
+    clickTravel: (StationEntity) -> Unit = {},
 ) {
 
     val favoriteIcon = rememberSaveable { mutableStateOf(R.drawable.empty_star) }
@@ -64,8 +66,8 @@ fun SliderItemComponent(
                 Column(
                     modifier = Modifier.padding(start = 16.dp)
                 ) {
-                    InputText(item.capacity.toString())
-                    InputText("242EUS")
+                    InputText("${item.capacity}/${item.need}")
+                    InputText("${distance}EUS")
                 }
 
                 IconButton(
@@ -83,7 +85,7 @@ fun SliderItemComponent(
                 ) {
                     Image(
                         painter = painterResource(id = favoriteIcon.value),
-                        contentDescription = "search",
+                        contentDescription = "favorite",
                         colorFilter = ColorFilter.tint(
                             SpaceXColor.surface
                         ),
@@ -99,25 +101,29 @@ fun SliderItemComponent(
 
             Spacer(modifier = Modifier.size(16.dp))
 
-            OutlinedButton(
-                onClick = {
+            if(isTravel) {
+                CircularProgressIndicator()
+            }else {
+                OutlinedButton(
+                    onClick = {
+                        clickTravel(item)
+                    },
+                    modifier = Modifier
+                        .padding(top = 16.dp, end = 16.dp)
+                        .wrapContentWidth(),
+                    border = BorderStroke(2.dp, SpaceXColor.surface),
+                    contentPadding = PaddingValues(0.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.Transparent,
+                        contentColor = Color.Transparent
+                    )
 
-                },
-                modifier = Modifier
-                    .padding(top = 16.dp, end = 16.dp)
-                    .wrapContentWidth(),
-                border = BorderStroke(2.dp, SpaceXColor.surface),
-                contentPadding = PaddingValues(0.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Transparent,
-                    contentColor = Color.Transparent
-                )
-
-            ) {
-                ButtonText(
-                    text = stringResource(id = R.string.travel),
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
+                ) {
+                    ButtonText(
+                        text = stringResource(id = R.string.travel),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.size(16.dp))

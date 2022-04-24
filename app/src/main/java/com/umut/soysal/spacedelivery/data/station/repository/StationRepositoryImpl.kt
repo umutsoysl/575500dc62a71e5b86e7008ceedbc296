@@ -23,15 +23,15 @@ class StationRepositoryImpl @Inject constructor(
 
     override suspend fun fetchStationList(searchKey: String): Flow<List<StationEntity>> {
         return flow {
-            fetchStationListDataFromLocal(searchKey).collect { localeResponse ->
+            fetchStationListDataFromLocal().collect { localeResponse ->
                 if (localeResponse.isNullOrEmpty()) {
-                    System.out.println("read remote data")
                     fetchStationListDataFromRemote().collect { remoteResponse ->
                         emit(remoteResponse)
                     }
                 } else {
-                    System.out.println("read local data")
-                    emit(localeResponse)
+                    searchStationListDataFromLocal(searchKey).collect { response ->
+                        emit(response)
+                    }
                 }
             }
         }.flowOn(ioDispatcher)
@@ -45,8 +45,12 @@ class StationRepositoryImpl @Inject constructor(
         stationLocalDataSource.favoriteStationList()
 
 
-    suspend fun fetchStationListDataFromLocal(searchKey: String) =
+    suspend fun searchStationListDataFromLocal(searchKey: String): Flow<List<StationEntity>> =
         stationLocalDataSource.searchStation(searchKey)
+
+    private suspend fun fetchStationListDataFromLocal() =
+        stationLocalDataSource.searchStation("%%")
+
 
 
     suspend fun fetchStationListDataFromRemote(): Flow<List<StationEntity>> {

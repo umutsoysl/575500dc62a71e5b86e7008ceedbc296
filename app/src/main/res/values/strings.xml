@@ -11,4 +11,5 @@
     <string name="station">İstasyon</string>
     <string name="favorites">Favoriler</string>
     <string name="travel">Travel</string>
+    <string name="search">Search</string>
 </resources>
