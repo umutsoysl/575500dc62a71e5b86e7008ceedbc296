@@ -7,6 +7,8 @@
     <string name="name">Uzay Aracı İsmi</string>
     <string name="space_point">Dağıtılacak Puan:</string>
     <string name="space_point_warning">Dağıtılacak Puan Maksimum 15 olmalıdır. Lütfen puanı azaltınız!</string>
+    <string name="space_name_empty_warning">Lütfen uzay aracı ismini giriniz.</string>
     <string name="station">İstasyon</string>
     <string name="favorites">Favoriler</string>
+    <string name="travel">Travel</string>
 </resources>

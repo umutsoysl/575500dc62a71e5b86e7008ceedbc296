@@ -4,9 +4,11 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.umut.soysal.spacedelivery.core.navigation.bottomnavigation.BottomNavigationHost
 import com.umut.soysal.spacedelivery.core.navigation.bottomnavigation.BottomNavigationMenu
 
+@ExperimentalPagerApi
 @Composable
 fun HomeScreen(
     navigationController: NavController? = null,

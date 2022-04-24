@@ -17,4 +17,7 @@ interface StationDao {
 
     @Query("SELECT * FROM ${GlobalConstant.DB_PLANET_TABLE} WHERE isFavorite=1")
     fun favoriteStationList(): List<StationEntity>
+
+    @Query("UPDATE ${GlobalConstant.DB_PLANET_TABLE} SET isFavorite=:favorite WHERE id=:stationId")
+    fun updateFavoriteStation(stationId: Int, favorite: Boolean)
 }

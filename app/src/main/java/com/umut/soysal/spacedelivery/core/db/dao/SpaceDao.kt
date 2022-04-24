@@ -13,8 +13,8 @@ interface SpaceDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSpace(space: SpaceEntity)
 
-    @Query("SELECT * FROM ${GlobalConstant.DB_SPACE_TABLE} LIMIT 1")
-    fun getSpace(): SpaceEntity
+    @Query("SELECT * FROM ${GlobalConstant.DB_SPACE_TABLE}")
+    fun getSpace(): List<SpaceEntity>
 
     @Query("DELETE FROM ${GlobalConstant.DB_SPACE_TABLE}")
     fun deleteAllSpace()

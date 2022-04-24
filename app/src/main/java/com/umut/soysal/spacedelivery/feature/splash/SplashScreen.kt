@@ -1,4 +1,4 @@
-package com.umut.soysal.spacedelivery.feature
+package com.umut.soysal.spacedelivery.feature.splash
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -12,17 +12,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.umut.soysal.spacedelivery.core.navigation.Screens
 import com.umut.soysal.spacedelivery.core.theme.SpaceXColor
 import com.umut.soysal.spacedelivery.core.ui.component.BigTitleText
 import com.umut.soysal.spacedelivery.R
+import com.umut.soysal.spacedelivery.feature.splash.StarterViewModel
 
 @Composable
 fun SplashScreen(
     navigationController: NavController? = null,
     alphaAnimationTargetValue: Float = 0f,
     alphaAnimationDurationMillis: Int = 1500,
+    starterViewModel: StarterViewModel = hiltViewModel()
 ) {
     Surface {
         Box(

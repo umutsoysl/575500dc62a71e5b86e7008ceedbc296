@@ -175,16 +175,30 @@ fun CreateSpaceScreen(
                 item {
                     OutlinedButton(
                         onClick = {
-                            if(spacePoint>15) {
-                                Toast.makeText(context, context.getString(R.string.space_point_warning), Toast.LENGTH_SHORT).show()
-                            } else{
+                            if (spacePoint > 15) {
+                                Toast.makeText(
+                                    context,
+                                    context.getString(R.string.space_point_warning),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else if (spaceName.isNullOrEmpty()) {
+                                Toast.makeText(
+                                    context,
+                                    context.getString(R.string.space_name_empty_warning),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
                                 viewModel.insertSpace(
                                     spaceName,
                                     speedPoint,
                                     capacityPoint,
                                     durabilityPoint
                                 )
-                                navigationController?.navigate(Screens.HomeScreen.route)
+                                navigationController?.navigate(Screens.HomeScreen.route) {
+                                    popUpTo(Screens.HomeScreen.route) {
+                                        inclusive = true
+                                    }
+                                }
                             }
                         },
                         modifier = Modifier

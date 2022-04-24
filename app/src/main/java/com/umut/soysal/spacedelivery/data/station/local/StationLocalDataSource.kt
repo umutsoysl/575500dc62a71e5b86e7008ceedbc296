@@ -34,4 +34,10 @@ class StationLocalDataSource @Inject constructor(
         }
     }
 
+    suspend fun updateFavoriteStation(stationId: Int, favorite: Boolean)= withContext(ioDispatcher) {
+        databaseWriteExecutor.execute {
+            stationDao.updateFavoriteStation(stationId, favorite)
+        }
+    }
+
 }

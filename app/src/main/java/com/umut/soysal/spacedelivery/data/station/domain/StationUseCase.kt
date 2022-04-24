@@ -5,4 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface StationUseCase {
     suspend fun fetchStationList(searchKey: String) : Flow<List<StationEntity>>
+
+    suspend fun updateFavoriteStation(stationId: Int, favorite: Boolean)
+
+    suspend fun getFavoriteStationList() : Flow<List<StationEntity>>
 }

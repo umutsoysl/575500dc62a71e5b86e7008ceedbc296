@@ -11,7 +11,7 @@ data class StationEntity (
     val id: Int = 0,
 
     @ColumnInfo(name = "name")
-    val name: String?,
+    val name: String = "",
 
     @ColumnInfo(name = "coordinateX")
     val coordinateX: Double = 0.0,
@@ -29,5 +29,5 @@ data class StationEntity (
     val need: Int = 0,
 
     @ColumnInfo(name = "isFavorite")
-    val isFavorite: Boolean = false,
+    var isFavorite: Boolean = false,
 )

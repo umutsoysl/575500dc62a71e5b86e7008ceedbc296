@@ -15,4 +15,11 @@ class StationUseCaseImpl @Inject constructor(
         return stationRepository.fetchStationList(searchKey)
     }
 
+    override suspend fun updateFavoriteStation(stationId: Int, favorite: Boolean) {
+        stationRepository.updateFavoriteStation(stationId, favorite)
+    }
+
+    override suspend fun getFavoriteStationList(): Flow<List<StationEntity>> =
+        stationRepository.getFavoriteStationList()
+
 }

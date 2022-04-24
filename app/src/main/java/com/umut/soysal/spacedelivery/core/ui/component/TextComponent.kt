@@ -55,3 +55,13 @@ fun InputText(text: String = "", modifier: Modifier = Modifier) {
         style = typography.body1
     )
 }
+
+@Composable
+fun ButtonText(text: String = "", modifier: Modifier = Modifier) {
+    Text(
+        text = text,
+        modifier = modifier,
+        color = SpaceXColor.surface,
+        style = typography.button
+    )
+}

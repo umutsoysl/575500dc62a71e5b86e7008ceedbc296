@@ -4,10 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.umut.soysal.spacedelivery.feature.HomeScreen
 import com.umut.soysal.spacedelivery.feature.space.CreateSpaceScreen
-import com.umut.soysal.spacedelivery.feature.SplashScreen
+import com.umut.soysal.spacedelivery.feature.splash.SplashScreen
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun SpaceXNavHost() {
     val navigation = rememberNavController()

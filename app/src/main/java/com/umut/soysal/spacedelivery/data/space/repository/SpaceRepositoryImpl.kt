@@ -18,7 +18,7 @@ class SpaceRepositoryImpl @Inject constructor(
 
     override suspend fun getSpace(): Flow<SpaceEntity> {
         return flow {
-            emit(spaceDao.getSpace())
+            emit(spaceDao.getSpace().first())
         }.flowOn(ioDispatcher)
     }
 

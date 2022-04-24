@@ -6,7 +6,7 @@ data class StationModel(
     val id: Int = 0,
 
     @Json(name = "name")
-    val name: String?,
+    val name: String = "",
 
     @Json(name = "coordinateX")
     val coordinateX: Double = 0.0,

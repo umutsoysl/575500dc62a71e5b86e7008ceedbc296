@@ -37,6 +37,13 @@ class StationRepositoryImpl @Inject constructor(
         }.flowOn(ioDispatcher)
     }
 
+    override suspend fun updateFavoriteStation(stationId: Int, favorite: Boolean) {
+        stationLocalDataSource.updateFavoriteStation(stationId, favorite)
+    }
+
+    override suspend fun getFavoriteStationList(): Flow<List<StationEntity>> =
+        stationLocalDataSource.favoriteStationList()
+
 
     suspend fun fetchStationListDataFromLocal(searchKey: String) =
         stationLocalDataSource.searchStation(searchKey)
