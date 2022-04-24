@@ -1,15 +1,19 @@
 # Space-X Delivery
 space delivery
 
-#MVVM
-#Jetpack Compose
-#Flow
-#Coroutines
-#Hilt
-#Navigation(NavHost)
-#Room
-#Clean architecture
-#SOLID
+## Used technologies
+
+* **Kotlin**
+* * **MVVM**
+* * **Jetpack Compose**
+* * **Flow**
+* * **Coroutines**
+* * **Hilt**
+* * **Navigation**
+* * **Room**
+* * **Clean architecture**
+* * **SOLID**
+
 
 ## Screenshots 📷
 <img src="/images/craete.png" width="300"> &emsp;
